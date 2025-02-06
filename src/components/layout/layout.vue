@@ -6,7 +6,6 @@
       collapsible
       collapsedWidth="40"
     >
-      <!-- 菜单栏区域 -->
       <a-menu
         mode="inline"
         theme="dark"
@@ -52,16 +51,8 @@
       </a-menu>
     </a-layout-sider>
     <a-layout>
-      <a-layout-header class="header flex wa-admin-header">
+      <a-layout-header class="flex header wa-admin-header">
         <div class="logo" />
-        <!-- App区域 -->
-        <a-menu
-          mode="horizontal"
-          :items="appList"
-          :selectedKeys="[store.state.common.activeGroup]"
-          @click="(v) => handleChangeApp(v?.key)"
-          v-if="appList.length > 1"
-        ></a-menu>
         <div class="ml-auto min-w-[100px] flex">
           <a class="flex mr-[10px]" @click="changeFull">
             <img :src="fullImg" class="w-[20px]"
@@ -76,7 +67,7 @@
             </template>
             <a class="flex items-center text-white"
               ><img :src="lanSvg" class="w-[20px] h-[20px] mr-[10px]" />{{
-                getLangLable(locale)
+                langLabel
               }}</a
             >
           </a-dropdown>
@@ -113,13 +104,13 @@ import { RouterView, useRoute, useRouter } from 'vue-router'
 import { Avatar } from 'ant-design-vue'
 import { systemLogout } from '@/utils'
 import { useI18n } from 'vue-i18n'
-import { langMap, getLangLable } from '@/constant'
 import { changeLang } from '@/utils/lang'
 import lanSvg from '@/assets/svg/lan.svg'
-import { WAMenu } from '@/types'
+import { MenuItem } from '@/types'
 import Logo from '@/assets/image/logo.png'
 import { fullscreen } from 'wa-utils'
 import fullImg from '@/assets/svg/full.svg'
+import { langMap, getLangLable } from '@/constant'
 
 const store = useStore()
 const { locale, t } = useI18n()
@@ -129,36 +120,20 @@ const routeData = useRoute()
 const path = routeData.path
 const tab = ref(path)
 
-const renderName = (item: WAMenu[0]) => {
-  if (item?.title) {
-    return item.title
-  }
-  const name = `menu.${item.name}`
+const langLabel = getLangLable(String(locale.value))
+
+const renderName = (item: MenuItem) => {
+  const name = item.title
   return t(name)
 }
 
-const appList = computed(() => {
-  return store.state.common.apps?.map((item) => ({
-    key: item.key,
-    title: item.name,
-    label: item.name
-  }))
-})
-
 const currentMenus = computed(() => {
-  const filterMenus = store.state.common.menus?.filter(
-    (item) => item.group === store.state.common.activeGroup || !item.group
-  )
-  return filterMenus
+  return store.state.common.menus
 })
 
-const handleClickMenu = ({ key }: { key: string }) => {
-  tab.value = key
-  router.push(key)
-}
-
-const handleChangeApp = (key: string) => {
-  store.dispatch('common/changeApp', { data: key })
+const handleClickMenu = (item: MenuItem) => {
+  tab.value = item.key
+  router.push(item.key)
 }
 
 const changeFull = () => {

@@ -1,11 +1,9 @@
 export default {
-  message: 'hello',
-  test: '测试',
-  'menu.workbench': 'workbench',
-  'menu.perm': 'perm test',
-  'menu.perm1': 'perm1',
-  'menu.perm2': 'perm2',
-  'menu.app2': 'app2 perm test',
-  'menu.app2Perm1': 'app2 perm1',
-  'menu.app2Perm2': 'app2 perm2'
+  "menu.catalogue": "menu.catalogue",
+  "menu.catalogue.perm": "menu.catalogue.perm",
+  "menu.catalogue.perm.edit": "menu.catalogue.perm.edit",
+  "menu.catalogue.no-perm-set": "menu.catalogue.no-perm-set",
+  "menu.perm": "menu.perm",
+  "menu.no-perm-set": "menu.no-perm-set",
+  "menu.workbench": "menu.workbench"
 }

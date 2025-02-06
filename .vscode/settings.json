@@ -1,8 +1,8 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "never",
-    "source.fixAll.stylelint": "never"
+    "source.fixAll.eslint": "always",
+    "source.fixAll.stylelint": "always"
   },
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "typescript.tsdk": "node_modules/typescript/lib"
 }

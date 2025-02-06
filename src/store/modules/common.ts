@@ -1,16 +1,18 @@
-import { CHANGEAPP, CHANGEMENUDATA } from '../actions'
-import { apps, menu } from '@/menu'
+import { MenuItem } from '@/types'
+import { CHANGEMENUDATA, SETPERMS, SETUSERINFO } from '../actions'
+import { getPerms } from '@/services/common'
 
 export interface CommonState {
-  menus: typeof menu
-  activeGroup: string
-  apps: typeof apps
+  menus: MenuItem[]
+  userInfo: Record<string, any>
+  perms: string[] | undefined
 }
 
+const permissions = await getPerms()
 const state: CommonState = {
   menus: [],
-  activeGroup: '',
-  apps
+  userInfo: {},
+  perms: permissions.data
 }
 
 const getters = {
@@ -26,29 +28,26 @@ const actions = {
   ) {
     commit(CHANGEMENUDATA, payload.data)
   },
-  changeApp(
+  changeUser(
     { state, commit }: any,
-    payload: { type: string; data: typeof state.activeGroup }
+    payload: { type: string; data: typeof state.userInfo }
   ) {
-    commit(CHANGEAPP, payload.data)
+    commit(SETUSERINFO, payload.data)
+  },
+  setPerms({ commit }: any, payload: { type: string; data: string[] }) {
+    commit(SETPERMS, payload.data)
   }
 }
 
 const mutations = {
-  [CHANGEMENUDATA](state: CommonState, data: typeof menu) {
-    let currentApp = ''
-    for (let i of state.apps) {
-      const hasMenu = data?.some((menuItem) => menuItem.group === i.key)
-      if (hasMenu) {
-        currentApp = i.key
-        break
-      }
-    }
+  [CHANGEMENUDATA](state: CommonState, data: MenuItem[]) {
     state.menus = data
-    state.activeGroup = currentApp
   },
-  [CHANGEAPP](state: CommonState, data: typeof state.activeGroup) {
-    state.activeGroup = data
+  [SETUSERINFO](state: CommonState, data: typeof state.userInfo) {
+    state.userInfo = data
+  },
+  [SETPERMS](state: CommonState, data: CommonState['perms']) {
+    state.perms = data
   }
 }
 

@@ -1,11 +1,9 @@
 export default {
-  message: "你好",
-  test: "测试",
-  "menu.workbench": "工作台",
-  "menu.perm": "perm测试",
-  "menu.perm1": "权限页1",
-  "menu.perm2": "权限页2",
-  "menu.app2": "应用2perm测试",
-  "menu.app2Perm1": "应用2权限页1",
-  "menu.app2Perm2": "应用2权限页2",
+  "menu.catalogue": "目录",
+  "menu.catalogue.perm": "目录页面权限测试",
+  "menu.catalogue.perm.edit": "目录页面权限编辑页测试",
+  "menu.catalogue.no-perm-set": "目录页面未设置权限测试",
+  "menu.perm": "权限页测试",
+  "menu.no-perm-set": "权限页测试空权限点",
+  "menu.workbench": "工作台"
 }

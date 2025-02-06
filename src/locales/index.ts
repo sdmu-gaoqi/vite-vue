@@ -1,4 +1,3 @@
-// import { globSync } from 'glob'
 import zhCN from './zh-CN'
 import en from './en'
 import { createI18n } from 'vue-i18n'

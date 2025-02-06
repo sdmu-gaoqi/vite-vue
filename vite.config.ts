@@ -18,7 +18,7 @@ export default defineConfig(
     const envData = loadEnv(mode, path.resolve(process.cwd(), 'env'))
     console.log('envData环境变量', envData)
     return {
-      base: 'admin',
+      base: '',
       plugins: [
         vue(),
         vueJsx(),
@@ -62,7 +62,7 @@ export default defineConfig(
         },
         preprocessorOptions: {
           scss: {
-            additionalData: '@import "./src/styles/main.scss";'
+            additionalData: '@use "./src/styles/main.scss";'
           }
         }
       },
