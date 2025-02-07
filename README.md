@@ -1,6 +1,4 @@
-# 访问地址
-
-http://111.229.138.125/admin/index.html
+# <%= project %>
 
 # 目录结构
 
