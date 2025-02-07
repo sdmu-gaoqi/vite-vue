@@ -7,6 +7,7 @@ import mkcert from 'vite-plugin-mkcert'
 import postCssPxToRem from 'wa-postcss-pxtorem'
 import tailwindCss from 'tailwindcss'
 import { viteMockServe } from 'vite-plugin-mock'
+import AutoImport from 'unplugin-auto-import/vite'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -14,9 +15,7 @@ const __dirname = dirname(__filename)
 // https://vitejs.dev/config/
 export default defineConfig(
   // @ts-ignore
-  ({ command, mode }: ConfigEnv): UserConfigExport => {
-    const envData = loadEnv(mode, path.resolve(process.cwd(), 'env'))
-    console.log('envData环境变量', envData)
+  ({ command }: ConfigEnv): UserConfigExport => {
     return {
       base: '',
       plugins: [
@@ -31,6 +30,16 @@ export default defineConfig(
               : path.resolve(process.cwd(), 'mock/prod/*.ts'),
           localEnabled: command === 'serve',
           prodEnabled: true
+        }),
+        AutoImport({
+          // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
+          imports: ['vue'],
+          dts: path.resolve(__dirname, 'src/types/auto-import.d.ts'),
+          eslintrc: {
+            enabled: false, // 是否自动生成 eslint 规则，建议生成之后设置 false
+            filepath: path.resolve(__dirname, './.eslintrc-auto-import.json'), // 指定自动导入函数 eslint 规则的文件
+            globalsPropValue: true
+          }
         })
       ],
       resolve: {

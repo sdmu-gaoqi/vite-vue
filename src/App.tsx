@@ -1,5 +1,4 @@
 import { ConfigProvider, StyleProvider } from 'ant-design-vue'
-import { defineComponent, onMounted } from 'vue'
 import { RouterView } from 'vue-router'
 import zhCN from 'ant-design-vue/es/locale/zh_CN'
 

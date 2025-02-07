@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Layout from './components/layout/layout.vue'
 import { isLogin } from './utils'
-import { RouteItem } from './types'
+import type { RouteItem } from './types'
 import Workbench from '@/assets/svg/工作台.svg'
 import Perm from '@/assets/svg/员工.svg'
 

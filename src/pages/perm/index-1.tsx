@@ -1,5 +1,3 @@
-import { defineComponent } from 'vue'
-
 const Perm1 = defineComponent({
   setup() {
     return () => {

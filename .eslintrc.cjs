@@ -7,7 +7,8 @@ module.exports = {
     jest: true,
     es6: true
   },
-  parser: ['@typescript-eslint/parser', 'vue-eslint-parser'],
+  // 'vue-eslint-parser' '@typescript-eslint/parser'
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     // Use babel-eslint for JavaScript
     parser: 'babel-eslint'
@@ -69,7 +70,7 @@ module.exports = {
       2,
       { ignoreRestSiblings: true, argsIgnorePattern: '^_' }
     ],
-    'no-undef': 2,
+    'no-undef': 0,
     camelcase: 'off',
     'no-extra-boolean-cast': 'off',
     semi: 0,
@@ -87,10 +88,10 @@ module.exports = {
       'error',
       {
         singleline: {
-          max: 1
+          max: 12
         },
         multiline: {
-          max: 1
+          max: 12
         }
       }
     ],

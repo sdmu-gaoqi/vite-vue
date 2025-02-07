@@ -1,7 +1,7 @@
 import zhCN from './zh-CN'
 import en from './en'
 import { createI18n } from 'vue-i18n'
-import { Lang } from '@/types'
+import type { Lang } from '@/types'
 import { local } from '@/utils/storage'
 
 const getInitLang = (): Lang => {

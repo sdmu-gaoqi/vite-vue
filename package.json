@@ -37,7 +37,6 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",
-    "@types/vue": "^2.0.0",
     "ant-design-vue": "^4.0.0",
     "axios": "^1.6.5",
     "babel-eslint": "^10.1.0",
@@ -81,6 +80,7 @@
     "vite-plugin-mock": "^2.9.6",
     "vite-svg-loader": "^4.0.0",
     "vue-tsc": "^1.8.5",
+    "unplugin-auto-import": "^19.0.0",
     "wa-postcss-pxtorem": "^0.0.1"
   }
 }

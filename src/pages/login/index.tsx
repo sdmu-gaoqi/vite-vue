@@ -1,10 +1,9 @@
 import { loginService } from '@/services/user'
 import { systemLogin } from '@/utils'
 import { Button, Form, Input } from 'ant-design-vue'
-import { defineComponent, reactive } from 'vue'
 
 const Login = defineComponent({
-  name: 'login',
+  name: 'Login',
   setup() {
     const formState = reactive({
       account: 'admin',

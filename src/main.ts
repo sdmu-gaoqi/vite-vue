@@ -1,4 +1,3 @@
-import { createApp, toRaw } from 'vue'
 import './style.css'
 import App from './App'
 import route from './route'

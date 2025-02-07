@@ -1,5 +1,5 @@
 import request from './request'
-import { CommonResponse } from './type'
+import type { CommonResponse } from './type'
 
 export const loginService = () => {
   return request

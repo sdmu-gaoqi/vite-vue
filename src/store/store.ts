@@ -1,6 +1,7 @@
-import { Store, createStore, useStore as baseUseStore } from 'vuex'
-import common, { CommonState } from './modules/common'
-import { InjectionKey } from 'vue'
+import type { Store } from 'vuex'
+import { createStore, useStore as baseUseStore } from 'vuex'
+import type { CommonState } from './modules/common'
+import common from './modules/common'
 
 export const key: InjectionKey<
   Store<{

@@ -4,14 +4,14 @@
       width="200"
       style="background: #fff"
       collapsible
-      collapsedWidth="40"
+      collapsed-width="40"
     >
       <a-menu
         mode="inline"
         theme="dark"
         :style="{ height: '100%', borderRight: 0 }"
+        :selected-keys="[tab]"
         @click="handleClickMenu"
-        :selectedKeys="[tab]"
       >
         <img :src="Logo" class="w-[60%] mx-auto my-[10%] block" />
         <template v-for="item in currentMenus">
@@ -22,8 +22,8 @@
             <template #title>
               <span>
                 <img
-                  :src="item.icon"
                   v-if="item.icon"
+                  :src="item.icon"
                   class="h-[15px] mr-[5px]"
                 />
                 {{ renderName(item) }}
@@ -40,8 +40,8 @@
           <template v-else-if="!item.children || item.children?.length === 0">
             <a-menu-item :key="item.key">
               <img
-                :src="item.icon"
                 v-if="item.icon"
+                :src="item.icon"
                 class="h-[15px] mr-[5px]"
               />
               {{ renderName(item) }}
@@ -60,7 +60,7 @@
           <a-dropdown>
             <template #overlay>
               <a-menu @click="(v) => changeLang(v.key)">
-                <a-menu-item :key="i.value" v-for="i in langMap">
+                <a-menu-item v-for="i in langMap" :key="i.value">
                   <a>{{ i.label }}</a>
                 </a-menu-item>
               </a-menu>
@@ -99,7 +99,6 @@
 </template>
 <script lang="ts" setup>
 import { useStore } from '@/store/store'
-import { computed, ref } from 'vue'
 import { RouterView, useRoute, useRouter } from 'vue-router'
 import { Avatar } from 'ant-design-vue'
 import { systemLogout } from '@/utils'

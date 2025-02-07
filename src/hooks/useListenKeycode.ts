@@ -1,14 +1,12 @@
-import { onUnmounted } from "vue";
-
 export type CodeType =
-  | "ArrowUp"
-  | "ArrowDown"
-  | "ArrowLeft"
-  | "ArrowRight"
-  | "Enter"
-  | "Space"
-  | "NumpadEnter"
-  | string;
+  | 'ArrowUp'
+  | 'ArrowDown'
+  | 'ArrowLeft'
+  | 'ArrowRight'
+  | 'Enter'
+  | 'Space'
+  | 'NumpadEnter'
+  | string
 
 const useListenKeycode = (
   el: HTMLElement,
@@ -17,20 +15,20 @@ const useListenKeycode = (
   const fn = (e: KeyboardEvent) => {
     data.forEach((todo, key) => {
       if (key?.includes(e.code)) {
-        todo && todo(e);
+        todo && todo(e)
       }
-    });
-  };
+    })
+  }
   const run = () => {
     if (!el) {
-      return;
+      return
     }
-    el.addEventListener("keydown", fn);
-  };
+    el.addEventListener('keydown', fn)
+  }
   onUnmounted(() => {
-    el.removeEventListener("keydown", fn);
-  });
-  return [run];
-};
+    el.removeEventListener('keydown', fn)
+  })
+  return [run]
+}
 
-export default useListenKeycode;
+export default useListenKeycode

@@ -1,6 +1,7 @@
 import { env } from '@/constant'
 import { message } from 'ant-design-vue'
-import axios, { AxiosRequestConfig } from 'axios'
+import type { AxiosRequestConfig } from 'axios'
+import axios from 'axios'
 import { cookie } from 'wa-utils'
 
 message.config({
@@ -29,7 +30,6 @@ class Request {
       // @ts-ignore
       // eslint-disable-next-line
       (res: any) => {
-        let data: Record<string, any> = res.data
         if (!res.code) {
           return Promise.resolve(res)
         }

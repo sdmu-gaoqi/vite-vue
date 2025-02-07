@@ -1,4 +1,4 @@
-import { RouteRecordRaw } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
 
 export type RouteItem = Omit<RouteRecordRaw, 'children'> & {
   name: string
