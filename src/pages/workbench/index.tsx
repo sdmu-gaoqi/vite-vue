@@ -13,7 +13,7 @@ const Workbench = defineComponent({
 })
 
 Workbench.install = function (app: App) {
-  app.component(Workbench.name, Workbench)
+  app.component(Workbench.name!, Workbench)
   return app
 }
 

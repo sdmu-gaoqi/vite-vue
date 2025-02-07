@@ -7,7 +7,6 @@ message.config({
   maxCount: 1
 })
 
-console.log(env.VITE_BASE_REQUEST, ';env')
 const _request = axios.create({
   baseURL: env.VITE_BASE_REQUEST,
   timeout: 150000,

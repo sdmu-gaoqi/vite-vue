@@ -7,7 +7,7 @@ module.exports = {
     jest: true,
     es6: true
   },
-  parser: '@typescript-eslint/parser',
+  parser: ['@typescript-eslint/parser', 'vue-eslint-parser'],
   parserOptions: {
     // Use babel-eslint for JavaScript
     parser: 'babel-eslint'
