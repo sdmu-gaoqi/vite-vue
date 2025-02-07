@@ -24,9 +24,6 @@ module.exports = {
     {
       files: ['*.ts', '*.tsx'],
       extends: ['@vue/typescript/recommended', '@vue/prettier'],
-      parserOptions: {
-        project: './tsconfig.json'
-      },
       rules: {
         '@typescript-eslint/no-explicit-any': 0,
         '@typescript-eslint/ban-types': 0,

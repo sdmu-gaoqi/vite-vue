@@ -13,7 +13,6 @@ export const transformRoute = (perm: string[]) => {
     return route.getRoutes()
   }
   const allRoutes = route.getRoutes()
-  console.log(allRoutes, 'allRoutes')
 
   allRoutes.forEach((item) => {
     const access = item?.meta?.access as string

@@ -20,6 +20,9 @@ export const layoutRoutes: RouteItem[] = [
     redirect: () => {
       return { path: '1' }
     },
+    meta: {
+      icon: Perm
+    },
     children: [
       {
         path: 'perm',
@@ -51,13 +54,17 @@ export const layoutRoutes: RouteItem[] = [
     name: 'menu.perm',
     component: () => import('./pages/perm/index-2'),
     meta: {
-      access: 'perm-1'
+      access: 'perm-1',
+      icon: Perm
     }
   },
   {
     path: '/menu/no-perm-set',
     component: () => import('./pages/perm/index-2'),
-    name: 'menu.no-perm-set'
+    name: 'menu.no-perm-set',
+    meta: {
+      icon: Perm
+    }
   }
 ]
 
