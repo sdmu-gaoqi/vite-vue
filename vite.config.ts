@@ -55,7 +55,7 @@ export default defineConfig(
       },
       server: {
         https: false,
-        port: 5500
+        port: 3000
       },
       css: {
         postcss: {
@@ -72,7 +72,8 @@ export default defineConfig(
         },
         preprocessorOptions: {
           scss: {
-            additionalData: '@use "./src/styles/main.scss";'
+            additionalData: '@use "./src/styles/main.scss";',
+            api: 'modern-compiler' // or 'modern'
           }
         }
       },

@@ -1,3 +1,4 @@
+import type { RouteRecordRaw } from 'vue-router'
 import { createRouter, createWebHistory } from 'vue-router'
 import Layout from './components/layout/layout.vue'
 import { isLogin } from './utils'
@@ -75,7 +76,7 @@ const route = createRouter({
       name: 'login',
       component: () => import('./pages/login'),
       meta: {
-        notLogin: true
+        notNeedLogin: true
       }
     },
     {
@@ -85,14 +86,14 @@ const route = createRouter({
       redirect: () => {
         return { path: '/workbench' }
       },
-      children: layoutRoutes
+      children: layoutRoutes as RouteRecordRaw[]
     },
     {
       path: '/403',
       name: '403',
       component: () => import('./pages/403/index.vue'),
       meta: {
-        notLogin: true
+        notNeedLogin: true
       }
     },
     {
@@ -100,12 +101,13 @@ const route = createRouter({
       name: '404',
       component: () => import('./pages/404/index.vue'),
       meta: {
-        notLogin: true
+        notNeedLogin: true
       }
     },
     {
       path: '/:pathMatch(.*)',
-      redirect: '/404'
+      redirect: '/404',
+      name: 'pathMatch'
     }
   ],
   history: createWebHistory()
