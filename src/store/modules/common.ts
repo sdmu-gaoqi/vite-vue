@@ -1,4 +1,4 @@
-import { MenuItem } from '@/types'
+import type { MenuItem } from '@/types'
 import { CHANGEMENUDATA, SETPERMS, SETUSERINFO } from '../actions'
 import { getPerms } from '@/services/common'
 

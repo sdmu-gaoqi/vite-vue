@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   env: {
-    browser: true,
+    browser: true, // 允许使用浏览器环境中的全局变量，如 window 和 document
     node: true,
     jasmine: true,
     jest: true,
@@ -15,10 +15,10 @@ module.exports = {
   extends: [
     'plugin:vue/vue3-recommended',
     'plugin:import/recommended',
-    'plugin:import/typescript',
+    'plugin:@typescript-eslint/recommended',
     'prettier'
   ],
-  plugins: ['@typescript-eslint', 'import'],
+  plugins: ['@typescript-eslint', 'import', 'vue'],
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
@@ -44,11 +44,11 @@ module.exports = {
       files: ['*.vue'],
       parser: 'vue-eslint-parser',
       parserOptions: {
-        parser: '@typescript-eslint/parser'
+        parser: '@typescript-eslint/parser' // 使用 @typescript-eslint/parser 解析 TypeScript 代码
       },
       rules: {
         'no-console': 'off',
-        "vue/no-use-v-if-with-v-for": 'off',
+        'vue/no-use-v-if-with-v-for': 'off',
         '@typescript-eslint/no-unused-vars': [
           'error',
           { vars: 'all', args: 'after-used', ignoreRestSiblings: true }
@@ -84,10 +84,14 @@ module.exports = {
     'vue/custom-event-name-casing': 'off',
     'vue/v-on-event-hyphenation': 'off',
     'vue/max-attributes-per-line': [
-      3,
+      'error',
       {
-        singleline: 20,
-        multiline: 1
+        singleline: {
+          max: 1
+        },
+        multiline: {
+          max: 1
+        }
       }
     ],
     'vue/multi-word-component-names': 'off'

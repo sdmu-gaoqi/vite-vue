@@ -1,6 +1,6 @@
 import { adminPerm } from '@/constant'
 import route, { layoutRoutes } from '@/route'
-import { MenuItem } from '@/types'
+import type { MenuItem } from '@/types'
 
 export const transformRoute = (perm: string[]) => {
   const isAdmin = perm.includes(adminPerm)
