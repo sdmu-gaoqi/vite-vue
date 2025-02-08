@@ -1,9 +1,9 @@
 import { adminPerm } from '@/constant'
-import { useStore } from 'vuex'
+import { useCommonStore } from '@/store'
 
 const useAccess = () => {
-  const store = useStore()
-  const perms = store?.state?.common?.perms
+  const commonStore = useCommonStore()
+  const perms = commonStore.perms
   return {
     view: perms.includes('view') || perms.includes(adminPerm)
   }

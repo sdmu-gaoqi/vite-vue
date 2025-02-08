@@ -17,6 +17,8 @@ const __dirname = dirname(__filename)
 export default defineConfig(
   // @ts-ignore
   ({ command }: ConfigEnv): UserConfigExport => {
+    console.log(command, 'commandcommand')
+
     return {
       base: '',
       plugins: [
@@ -25,10 +27,7 @@ export default defineConfig(
         mkcert(),
         viteMockServe({
           mockPath: 'mock',
-          injectFile:
-            command === 'serve'
-              ? path.resolve(process.cwd(), 'mock/test/*.ts')
-              : path.resolve(process.cwd(), 'mock/prod/*.ts'),
+          injectFile: path.resolve(process.cwd(), 'mock/*.ts'),
           localEnabled: command === 'serve',
           prodEnabled: true
         }),

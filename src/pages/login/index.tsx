@@ -1,10 +1,12 @@
 import { loginService } from '@/services/user'
 import { systemLogin } from '@/utils'
 import { Button, Form, Input } from 'ant-design-vue'
+import { useRouter } from 'vue-router'
 
 const Login = defineComponent({
   name: 'Login',
   setup() {
+    const route = useRouter()
     const formState = reactive({
       account: 'admin',
       password: '123456'
@@ -13,6 +15,7 @@ const Login = defineComponent({
     const login = async () => {
       const res = await loginService()
       systemLogin(res?.data?.token)
+      route.push({ path: '/workbench' })
     }
 
     return () => (

@@ -12,7 +12,6 @@ export const logout = () => {
 
 export const systemLogin = (token: string) => {
   local.baseSet(loginToken, token)
-  location.reload()
 }
 
 export const systemLogout = async () => {

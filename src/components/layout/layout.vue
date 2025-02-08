@@ -98,7 +98,6 @@
   </a-layout>
 </template>
 <script lang="ts" setup>
-import { useStore } from '@/store/store'
 import { RouterView, useRoute, useRouter } from 'vue-router'
 import { Avatar } from 'ant-design-vue'
 import { systemLogout } from '@/utils'
@@ -110,8 +109,9 @@ import Logo from '@/assets/image/logo.png'
 import { fullscreen } from 'wa-utils'
 import fullImg from '@/assets/svg/full.svg'
 import { langMap, getLangLable } from '@/constant'
+import { useCommonStore } from '@/store'
 
-const store = useStore()
+const commonStore = useCommonStore()
 const { locale, t } = useI18n()
 const router = useRouter()
 const routeData = useRoute()
@@ -127,7 +127,7 @@ const renderName = (item: MenuItem) => {
 }
 
 const currentMenus = computed(() => {
-  return store.state.common.menus
+  return commonStore.menus
 })
 
 const handleClickMenu = (item: MenuItem) => {

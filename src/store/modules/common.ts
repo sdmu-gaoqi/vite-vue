@@ -1,60 +1,34 @@
 import type { MenuItem } from '@/types'
-import { CHANGEMENUDATA, SETPERMS, SETUSERINFO } from '../actions'
-import { getPerms } from '@/services/common'
+import { routes2Menus } from '@/utils/menu'
+import { defineStore } from 'pinia'
 
-export interface CommonState {
-  menus: MenuItem[]
-  userInfo: Record<string, any>
-  perms: string[] | undefined
-}
+const useCommonStore = defineStore('common', () => {
+  const menus = ref<MenuItem[]>([])
+  const userInfo = ref({})
+  const perms = ref<string[]>(['1'])
 
-const permissions = await getPerms()
-const state: CommonState = {
-  menus: [],
-  userInfo: {},
-  perms: permissions.data
-}
-
-const getters = {
-  menus(state: CommonState) {
-    return state.menus
+  const savePerms = (data: string[]) => {
+    perms.value = data
+    const menu = routes2Menus(data)
+    changeMenus(menu)
   }
-}
 
-const actions = {
-  changeMenus(
-    { state, commit }: any,
-    payload: { type: string; data: typeof state.menus }
-  ) {
-    commit(CHANGEMENUDATA, payload.data)
-  },
-  changeUser(
-    { state, commit }: any,
-    payload: { type: string; data: typeof state.userInfo }
-  ) {
-    commit(SETUSERINFO, payload.data)
-  },
-  setPerms({ commit }: any, payload: { type: string; data: string[] }) {
-    commit(SETPERMS, payload.data)
+  const changeMenus = (data: MenuItem[]) => {
+    menus.value = data
   }
-}
 
-const mutations = {
-  [CHANGEMENUDATA](state: CommonState, data: MenuItem[]) {
-    state.menus = data
-  },
-  [SETUSERINFO](state: CommonState, data: typeof state.userInfo) {
-    state.userInfo = data
-  },
-  [SETPERMS](state: CommonState, data: CommonState['perms']) {
-    state.perms = data
+  const changeUser = (data: typeof userInfo) => {
+    userInfo.value = data
   }
-}
 
-export default {
-  namespaced: true,
-  state,
-  getters,
-  actions,
-  mutations
-}
+  return {
+    menus,
+    userInfo,
+    perms,
+    changeMenus,
+    changeUser,
+    savePerms
+  }
+})
+
+export default useCommonStore
