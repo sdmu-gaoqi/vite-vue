@@ -9,6 +9,7 @@ import postCssPxToRem from 'wa-postcss-pxtorem'
 import tailwindCss from 'tailwindcss'
 import { viteMockServe } from 'vite-plugin-mock'
 import AutoImport from 'unplugin-auto-import/vite'
+import topLevelAwait from 'vite-plugin-top-level-await'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -30,6 +31,10 @@ export default defineConfig(
           injectFile: path.resolve(process.cwd(), 'mock/*.ts'),
           localEnabled: command === 'serve',
           prodEnabled: true
+        }),
+        topLevelAwait({
+          promiseExportName: '__tla',
+          promiseImportName: (i) => `__tla_${i}`
         }),
         AutoImport({
           // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
