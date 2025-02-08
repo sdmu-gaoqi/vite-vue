@@ -53,8 +53,7 @@ package里有不同环境的打包方式
 
 ## 关于mock
 
-mock预设为 test 与 prod(根据import.meta.env.MODE 决定 prod模式时 使用的是prod文件下的mock 其他的都是用的test下的mock)
-需要增加更多环境支持可以在 mock/index.ts修改
+mock预设写在mock文件中
 
 ---
 
