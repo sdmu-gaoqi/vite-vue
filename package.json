@@ -37,7 +37,6 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",
-    "@wagq/lint": "^0.0.1",
     "ant-design-vue": "^4.0.0",
     "axios": "^1.6.5",
     "babel-eslint": "^10.1.0",
@@ -57,7 +56,6 @@
     "wa-utils": "^0.3.3"
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "^19.7.1",
     "@types/node": "^20.4.5",
     "@typescript-eslint/eslint-plugin": "^5.52.0",
     "@typescript-eslint/parser": "^6.10.0",
@@ -65,6 +63,7 @@
     "@vitejs/plugin-vue-jsx": "^3.0.1",
     "@vue/eslint-config-prettier": "^8.0.0",
     "@vue/eslint-config-typescript": "^11.0.3",
+    "@wagq/lint": "^0.0.2",
     "commitlint": "^19.7.1",
     "eslint": "^8.57.0",
     "eslint-config-standard-with-typescript": "^37.0.0",
